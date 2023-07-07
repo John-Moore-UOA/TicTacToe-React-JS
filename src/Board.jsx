@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./styles.css";
 import Square from "./Square";
 
@@ -13,6 +13,15 @@ function Board() {
     } else {
       console.log("selected", round);
       incrementRound(round + 1);
+      togglePlayer(round);
+    }
+  };
+
+  const togglePlayer = (round) => {
+    if (round % 2 === 0) {
+      // background colour style tolight primary
+    } else {
+      // background colour style to light primary
     }
   };
 
