@@ -1,31 +1,32 @@
 import { useState } from "react";
 import "./styles.css";
 
-function Square({ value, id, round, onSelectTile }) {
+function Square({ id, round, onSelectTile }) {
   const [selectedTile, setSelectedTile] = useState(null);
 
-  let className = "square";
+  const [className, setClassName] = useState("square");
 
-  const getTileClassName = (id, round) => {
-    if (className != "square") return className;
-
-    if (selectedTile === id) {
-      className = round % 2 === 0 ? "playerOneSquare" : "playerTwoSquare";
-      return className;
+  const decideClassName = (round, id) => {
+    if (round % 2 === 0) {
+      return "playerOneSquare";
+    } else {
+      return "playerTwoSquare";
     }
-    return "square";
   };
 
   return (
     <>
       {
         <div
-          className={getTileClassName(id, round)}
+          className={className}
           onClick={(event) => {
             setSelectedTile(id);
             onSelectTile(id);
+            setClassName(decideClassName(round, id));
           }}
-        ></div>
+        >
+          {/* {className} */}
+        </div>
       }{" "}
     </>
   );

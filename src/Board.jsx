@@ -7,19 +7,18 @@ function Board() {
   const [round, incrementRound] = useState(0);
 
   const handleSelectTile = (id) => {
-    console.log(id + " selected");
+    // console.log(id + " selected");
     incrementRound(round + 1);
   };
 
   return (
     <>
       <div className="board">
-        {data.map((value, index) => {
+        {data.map((index) => {
           return (
             <>
               <Square
                 id={index}
-                value={value}
                 round={round}
                 onSelectTile={handleSelectTile}
               />
