@@ -7,8 +7,13 @@ function Board() {
   const [round, incrementRound] = useState(0);
 
   const handleSelectTile = (id) => {
-    // console.log(id + " selected");
-    incrementRound(round + 1);
+    if (id === -1) {
+      // display error message
+      console.log("already selected", round);
+    } else {
+      console.log("selected", round);
+      incrementRound(round + 1);
+    }
   };
 
   return (
@@ -20,7 +25,7 @@ function Board() {
               <Square
                 id={index}
                 round={round}
-                onSelectTile={handleSelectTile}
+                onCompleteCheck={handleSelectTile}
               />
             </>
           );

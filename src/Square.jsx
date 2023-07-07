@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./styles.css";
 
-function Square({ id, round, onSelectTile }) {
+function Square({ id, round, onCompleteCheck }) {
   const [selectedTile, setSelectedTile] = useState(null);
 
   const [className, setClassName] = useState("square");
@@ -14,15 +14,29 @@ function Square({ id, round, onSelectTile }) {
     }
   };
 
+  const onSelectTile = (id) => {
+    // select tile
+    setSelectedTile(id);
+
+    // check if tile is already selected
+    if (className !== "square") {
+      return onCompleteCheck(-1);
+    }
+
+    // decide on new class name
+    setClassName(decideClassName(round, id));
+
+    // send data back to board
+    onCompleteCheck(id);
+  };
+
   return (
     <>
       {
         <div
           className={className}
           onClick={(event) => {
-            setSelectedTile(id);
             onSelectTile(id);
-            setClassName(decideClassName(round, id));
           }}
         >
           {/* {className} */}
