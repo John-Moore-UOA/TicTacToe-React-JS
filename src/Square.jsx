@@ -8,7 +8,7 @@ function getTileClassName(id, selectedTile, round) {
   return "square";
 }
 
-function Square({ value, id, round }) {
+function Square({ value, id, round, onSelectTile }) {
   const [selectedTile, setSelectedTile] = useState(null);
 
   return (
@@ -18,7 +18,7 @@ function Square({ value, id, round }) {
           className={getTileClassName(id, selectedTile, round)}
           onClick={(event) => {
             setSelectedTile(id);
-            console.log(id, round);
+            onSelectTile(id);
           }}
         >
           {value}
