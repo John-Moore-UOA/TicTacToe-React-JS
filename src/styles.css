@@ -20,11 +20,11 @@ grid-row-gap: 0px;
   border: 1px solid black;
 }
 
-.player-1-Square {
+.playerOneSquare {
   background-color: red;
   border: 1px solid black;
 }
-.player-2-Square {
+.playerTwoSquare {
   background-color: blue;
   border: 1px solid black;
 }

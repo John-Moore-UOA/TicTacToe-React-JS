@@ -3,6 +3,7 @@ import "./styles.css";
 import Square from "./Square";
 
 const data = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const round = 0;
 
 function Board() {
   return (
@@ -11,7 +12,7 @@ function Board() {
         {data.map((value, index) => {
           return (
             <>
-              <Square id={index} value={value} />
+              <Square id={index} value={value} round={round} />
             </>
           );
         })}

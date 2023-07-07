@@ -1,24 +1,24 @@
 import { useState } from "react";
 import "./styles.css";
 
-function selectTile(selectedTile) {
-  console.log(selectedTile + " was selected");
+function getTileClassName(id, selectedTile, round) {
+  if (selectedTile === id) {
+    return round % 2 === 0 ? "playerOneSquare" : "playerTwoSquare";
+  }
+  return "square";
 }
 
-function Square({ value, id }) {
+function Square({ value, id, round }) {
   const [selectedTile, setSelectedTile] = useState(null);
-  const [round, incrementRound] = useState(0);
 
   return (
     <>
       {
         <div
-          className={round % 2 === 0 ? "player-1-Square" : "player-2-Square"}
+          className={getTileClassName(id, selectedTile, round)}
           onClick={(event) => {
-            selectTile(id);
             setSelectedTile(id);
-            incrementRound(round + 1);
-            //console.log(id);
+            console.log(id, round);
           }}
         >
           {value}
